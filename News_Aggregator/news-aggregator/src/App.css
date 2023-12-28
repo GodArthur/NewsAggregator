@@ -1,0 +1,66 @@
+.custom-search {
+  background-color: whitesmoke !important;
+}
+
+.custom-search::placeholder {
+  color: #8b9dc3;
+}
+
+.app {
+  height: 100%;
+}
+
+.newsgrid {
+  background-color: #363636;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.img-wrapper {
+  height: 7em;
+}
+
+.cards-wrapper {
+  margin: 3em;
+  justify-content: center;
+}
+
+.card {
+  margin: 0.5em;
+  width: calc(100% / 6.5);
+  height: 15em;
+  overflow: hidden;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Number of lines you want */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-link {
+  color: inherit; /* This will make the text color the same as the parent element */
+  text-decoration: none; /* This removes the underline from links */
+}
+
+.carousell {
+  text-align: center;
+}
+
+.carousel-indicators {
+  /*visibility: hidden;*/
+}
+
+.carousel-control-prev {
+  /*background-color: black;*/
+}
+
+.carousel-control-next {
+  /*background-color: black;*/
+}
+.carousel-control-next-icon {
+  color: red;
+}
