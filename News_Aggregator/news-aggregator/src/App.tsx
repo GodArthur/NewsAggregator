@@ -8,24 +8,31 @@ import { Article } from "./types";
 import NewsGrid from "./components/NewsGrid";
 
 function App() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [category, setCategory] = useState("technology");
-
+  const [articlesByCategory, setArticlesByCategory] = useState<Article[][]>([]);
+  const categories = [
+    "General",
+    "Entertainment",
+    "Technology",
+    "Health",
+    "Business",
+    "Science",
+    "Sports",
+  ];
   useEffect(() => {
-    fetchNews(category)
-      .then((fetchedArticles) => {
-        console.log(fetchedArticles); // Log the fetched articles
-        setArticles(fetchedArticles);
-      })
-      .catch((error) => {
-        console.error("Error fetching news:", error);
-      });
-  }, [category]);
+    const categoryRequests = categories.map((category) => fetchNews(category));
+
+    Promise.all(categoryRequests).then((results) => {
+      setArticlesByCategory(results);
+    });
+  }, []);
 
   return (
     <div className="app">
       <NavBar />
-      <NewsGrid articles={articles} />
+      <NewsGrid
+        categories={categories}
+        articlesByCategory={articlesByCategory}
+      />
     </div>
   );
 }

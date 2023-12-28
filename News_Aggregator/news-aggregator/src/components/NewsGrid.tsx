@@ -4,13 +4,20 @@ import CarouselRow from "./CarouselRow";
 import { Article } from "../types";
 
 interface NewsGridProps {
-  articles: Article[];
+  categories: string[]; // Category names
+  articlesByCategory: Article[][];
 }
 
-const NewsGrid = ({ articles }: NewsGridProps) => {
+const NewsGrid = ({ categories, articlesByCategory }: NewsGridProps) => {
   return (
     <div className="newsgrid">
-      <CarouselRow articles={articles} />
+      {articlesByCategory.map((articles, index) => (
+        <CarouselRow
+          key={index}
+          category={categories[index]}
+          articles={articles}
+        />
+      ))}
     </div>
   );
 };

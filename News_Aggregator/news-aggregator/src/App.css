@@ -14,11 +14,18 @@
   background-color: #363636;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100%; /* Full viewport height */
+}
+
+.category-title {
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
 }
 
 .img-wrapper {
-  height: 7em;
+  height: 8em;
 }
 
 .cards-wrapper {
@@ -28,8 +35,8 @@
 
 .card {
   margin: 0.5em;
-  width: calc(100% / 6.5);
-  height: 15em;
+  width: calc(100% / 7.5);
+  height: 16em;
   overflow: hidden;
 }
 
@@ -51,7 +58,7 @@
 }
 
 .carousel-indicators {
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .carousel-control-prev {
@@ -60,7 +67,4 @@
 
 .carousel-control-next {
   /*background-color: black;*/
-}
-.carousel-control-next-icon {
-  color: red;
 }

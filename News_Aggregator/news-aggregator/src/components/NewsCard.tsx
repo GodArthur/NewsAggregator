@@ -6,6 +6,10 @@ interface NewsCardProps {
   article: Article;
 }
 const NewsCard = ({ article }: NewsCardProps) => {
+  const imageUrl = article.urlToImage
+    ? article.urlToImage
+    : "/news_default.png";
+
   return (
     <Card className="card">
       <a
@@ -16,7 +20,8 @@ const NewsCard = ({ article }: NewsCardProps) => {
       >
         <Card.Img
           variant="top"
-          src={article.urlToImage}
+          src={imageUrl}
+          onError={(e) => (e.currentTarget.src = "news_default.png")}
           className="img-wrapper"
         />
 
