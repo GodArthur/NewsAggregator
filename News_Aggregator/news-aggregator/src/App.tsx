@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import NavBar from "./components/NavBar";
-import { fetchNews } from "./services/newsApi";
-import NewsCard from "./components/NewsCard";
-import CarouselRow from "./components/CarouselRow";
+import { fetchAllNews } from "./services/newsApi";
 import { Article } from "./types";
 import NewsGrid from "./components/NewsGrid";
+import SearchResults from "./components/SearchResults";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [articlesByCategory, setArticlesByCategory] = useState<Article[][]>([]);
@@ -19,7 +18,9 @@ function App() {
     "Sports",
   ];
   useEffect(() => {
-    const categoryRequests = categories.map((category) => fetchNews(category));
+    const categoryRequests = categories.map((category) =>
+      fetchAllNews(category)
+    );
 
     Promise.all(categoryRequests).then((results) => {
       setArticlesByCategory(results);
@@ -27,13 +28,21 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <Router>
       <NavBar />
-      <NewsGrid
-        categories={categories}
-        articlesByCategory={articlesByCategory}
-      />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <NewsGrid
+              categories={categories}
+              articlesByCategory={articlesByCategory}
+            />
+          }
+        />
+        <Route path="/search" element={<SearchResults />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -11,10 +11,12 @@ const API_KEY = "a57be76ec5a644e6863fff5953e3dbdd";
 
 app.get('/api/news', async (req, res) => {
     try {
-        const category = req.query.sources;
+        const category = req.query.category;
+        const query = req.query.q;
         const response = await axios.get('https://newsapi.org/v2/top-headlines', {
             params: { 
-                category: category,
+                category: "technology",
+                q: query,
                 language: "en",
                 apiKey: API_KEY, // Set in your server's environment
                 // other parameters
