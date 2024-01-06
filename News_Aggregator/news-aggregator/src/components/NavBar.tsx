@@ -6,16 +6,22 @@ import Navbar from "react-bootstrap/Navbar";
 import SearchBar from "./SearchBar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleHome = () => {
+    navigate("/");
+  };
   return (
-    <Navbar expand="lg" bg="primary" data-bs-theme="dark">
+    <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">StoryStream</Navbar.Brand>
+        <Navbar.Brand onClick={handleHome}>StoryStream</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link onClick={handleHome}>Home</Nav.Link>
             <Nav.Link href="#link">sign in</Nav.Link>
           </Nav>
           <SearchBar />

@@ -4,14 +4,15 @@ import { Article } from "../types";
 
 interface NewsCardProps {
   article: Article;
+  isSearch?: boolean;
 }
-const NewsCard = ({ article }: NewsCardProps) => {
+const NewsCard = ({ article, isSearch }: NewsCardProps) => {
   const imageUrl = article.urlToImage
     ? article.urlToImage
     : "/news_default.png";
 
   return (
-    <Card className="card">
+    <Card className={`${isSearch ? "cell-item" : "news-card"}`}>
       <a
         href={article.url}
         className="card-link"

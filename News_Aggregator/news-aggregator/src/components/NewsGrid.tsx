@@ -1,4 +1,3 @@
-import React from "react";
 import NewsCard from "./NewsCard";
 import CarouselRow from "./CarouselRow";
 import { Article } from "../types";
@@ -20,9 +19,9 @@ const NewsGrid = ({
     // If it's search results, flatten the array and display in a list or grid
 
     return (
-      <div className="newsgrid">
+      <div className="newsgrid-search">
         {articles.map((article, index) => (
-          <NewsCard key={index} article={article} />
+          <NewsCard isSearch={true} key={index} article={article} />
         ))}
       </div>
     );

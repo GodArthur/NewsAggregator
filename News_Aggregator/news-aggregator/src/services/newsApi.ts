@@ -5,7 +5,7 @@ const fetchAllNews = async (category: string) => {
     // Make a request to your Node server endpoint
     // Assuming your server is running on localhost:3001
     const response = await axios.get(`http://localhost:3001/api/news`, {
-      params: { q: "", category: category },
+      params: { category: category },
     });
     return response.data; // The data received from your Node server
   } catch (error) {
@@ -16,8 +16,8 @@ const fetchAllNews = async (category: string) => {
 
 const fetchNewsByQuery = async (query: string) => {
   try {
-    const response = await axios.get(`http://localhost:3001/api/news`, {
-      params: { q: query, category: "" },
+    const response = await axios.get(`http://localhost:3001/api/news/search`, {
+      params: { q: query },
     });
     return response.data; // The data received from your Node server
   } catch (error) {

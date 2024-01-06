@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Article } from "../types";
@@ -9,15 +9,18 @@ import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  //Changing the search bar text
   const handleQueryChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.currentTarget.value);
   };
 
   const navigate = useNavigate();
-  const handleSearch = async () => {
+
+  //Handling when the search form is submitted
+  const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       const fetchedArticles = await fetchNewsByQuery(searchQuery);
-      console.log("fetched articles " + fetchedArticles);
       navigate("/search", {
         state: {
           articles: fetchedArticles,
@@ -29,7 +32,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Form className="d-flex justify-content-end">
+    <Form className="d-flex justify-content-end" onSubmit={handleSearch}>
       <Form.Control
         type="search"
         placeholder="Search"
@@ -38,7 +41,7 @@ const SearchBar = () => {
         value={searchQuery}
         onChange={handleQueryChange}
       />
-      <Button variant="light" onClick={handleSearch}>
+      <Button variant="light" type="submit">
         Search
       </Button>
     </Form>

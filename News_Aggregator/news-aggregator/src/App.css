@@ -1,9 +1,12 @@
-.custom-search {
-  background-color: whitesmoke !important;
+/* Target the input field directly for text color */
+.custom-search input {
+  color: #000; /* or any dark color for text */
+  background-color: #fff; /* white background */
 }
 
-.custom-search::placeholder {
-  color: #8b9dc3;
+/* Target only the placeholder within the input for its color */
+.custom-search input::placeholder {
+  color: #aaa; /* or any light color for placeholder */
 }
 
 .app {
@@ -15,6 +18,24 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Full viewport height */
+}
+
+.newsgrid-search {
+  background-color: #363636;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  gap: 1rem; /* This is the space between items */
+  height: 100%; /* Full viewport height */
+  justify-items: center;
+  align-items: center;
+}
+
+.cell-item {
+  margin: 0.5em;
+  width: 50%;
+  height: 16em;
+  margin-top: 2em;
+  overflow: hidden;
 }
 
 .category-title {
@@ -33,9 +54,9 @@
   justify-content: center;
 }
 
-.card {
+.news-card {
   margin: 0.5em;
-  width: calc(100% / 7.5);
+  max-width: calc(100% / 7.5);
   height: 16em;
   overflow: hidden;
 }
