@@ -13,6 +13,7 @@ This News Aggregator App is a React-based application that utilizes NewsAPI to f
 - Node.js
 - React Bootstrap
 - React Router
+- TypeScript
 
 ## Getting Started
 To get a local copy up and running, follow these simple steps.
