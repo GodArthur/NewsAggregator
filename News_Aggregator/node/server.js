@@ -15,7 +15,7 @@ app.get('/api/news', async (req, res) => {
         const query = req.query.q;
         const response = await axios.get('https://newsapi.org/v2/top-headlines', {
             params: { 
-                category: "technology",
+                category: category,
                 q: query,
                 language: "en",
                 apiKey: API_KEY, // Set in your server's environment
